@@ -222,6 +222,8 @@ def BuildDataset(Output, FirehosePath=None, Disease=None,
                 Clinical.Values[:, Current, np.newaxis]
             Survival[Indices] = Clinical.Survival[Current]
             Censored[Indices] = Clinical.Censored[Current]
+        AvailableClinical = [True if Sample[0:12] in ClinicalSamples else False
+                             for Sample in Samples]
 
         # reshape arrays from mutation data to match order, size of 'Samples'
         Indices = [Samples.index(Sample) for Sample in MutationSamples if
@@ -282,6 +284,11 @@ def BuildDataset(Output, FirehosePath=None, Disease=None,
         pickle.dump(Features, File)
         pickle.dump(Survival, File)
         pickle.dump(Censored, File)
+        pickle.dump(AvailableClinical, File)
+        pickle.dump(AvailableMutation, File)
+        pickle.dump(AvailableCNV, File)
+        pickle.dump(AvailableProtein, File)
+        pickle.dump(AvailablemRNA, File)
         File.close()
 
     return

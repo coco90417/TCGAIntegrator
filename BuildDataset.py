@@ -80,7 +80,6 @@ def BuildDataset(Output, FirehosePath=None, Disease=None,
     AllDiseases = ['ACC','BLCA','BRCA','CESC','CHOL','COAD','COADREAD','DLBC','ESCA','FPPP','GBM','GBMLGG','HNSC','KICH','KIPAN','KIRC','KIRP','LAML','LGG','LIHC','LUAD','LUSC','MESO','OV','PAAD','PCPG','PRAD','READ','SARC','SKCM','STAD','STES','TGCT','THCA','THYM','UCEC','UCS','UVM']
     if not (Disease in AllDiseases or Disease is None):
         raise Exception('Incorrect Disease Type')
-    print "check"
 
     # add trailing slash to 'Output' if present
     if Output[-1] != '/':
